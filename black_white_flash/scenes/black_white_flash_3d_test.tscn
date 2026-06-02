@@ -1,0 +1,218 @@
+[gd_scene format=3]
+
+[ext_resource type="Script" path="res://scripts/black_white_flash_3d_test.gd" id="1_script"]
+[ext_resource type="Shader" path="res://shaders/black_white_flash_3d_screen.gdshader" id="2_shader"]
+[ext_resource type="Texture2D" path="res://sprite/FX/T_Noise56ko.png" id="3_speed_noise"]
+
+[sub_resource type="Environment" id="Environment_black_white_flash_3d"]
+background_mode = 1
+background_color = Color(0.035, 0.039, 0.05, 1)
+ambient_light_source = 2
+ambient_light_color = Color(0.32, 0.36, 0.44, 1)
+ambient_light_energy = 0.72
+tonemap_mode = 2
+glow_enabled = true
+glow_normalized = true
+glow_intensity = 0.18
+glow_bloom = 0.08
+
+[sub_resource type="StandardMaterial3D" id="TargetMaterial"]
+diffuse_mode = 3
+specular_mode = 1
+albedo_color = Color(0.62, 0.48, 0.32, 1)
+roughness = 0.42
+emission_enabled = true
+emission = Color(0.15, 0.08, 0.02, 1)
+emission_energy_multiplier = 0.18
+
+[sub_resource type="BoxMesh" id="BoxMesh_target"]
+size = Vector3(1.08, 1.08, 1.08)
+subdivide_width = 2
+subdivide_height = 2
+subdivide_depth = 2
+
+[sub_resource type="StandardMaterial3D" id="SlashMaterial"]
+albedo_color = Color(0.92, 0.96, 1, 1)
+roughness = 0.2
+emission_enabled = true
+emission = Color(0.72, 0.88, 1, 1)
+emission_energy_multiplier = 1.15
+
+[sub_resource type="BoxMesh" id="BoxMesh_slash"]
+size = Vector3(2.45, 0.12, 0.2)
+
+[sub_resource type="StandardMaterial3D" id="BrightMaterial"]
+albedo_color = Color(0.95, 0.86, 0.42, 1)
+roughness = 0.34
+emission_enabled = true
+emission = Color(0.9, 0.55, 0.08, 1)
+emission_energy_multiplier = 0.45
+
+[sub_resource type="SphereMesh" id="SphereMesh_marker"]
+radius = 0.075
+height = 0.15
+
+[sub_resource type="ShaderMaterial" id="ShaderMaterial_black_white_flash_3d"]
+resource_local_to_scene = true
+render_priority = 0
+shader = ExtResource("2_shader")
+shader_parameter/speed_line_noise = ExtResource("3_speed_noise")
+shader_parameter/effect_enabled = true
+shader_parameter/effect_strength = 1.0
+shader_parameter/impact_phase = 0.19
+shader_parameter/flash_center = Vector2(0.5, 0.54)
+shader_parameter/effect_uv_rect = Vector4(0, 0, 1, 1)
+shader_parameter/center_radius = 0.0
+shader_parameter/center_feather = 0.01
+shader_parameter/invert_effect_strength = 1.0
+shader_parameter/invert_amount = 1.0
+shader_parameter/filter_luma_start = 0.51
+shader_parameter/filter_luma_range = 0.001
+shader_parameter/bright_flash_color = Color(1, 1, 1, 1)
+shader_parameter/dark_flash_color = Color(0, 0, 0, 1)
+shader_parameter/flash_contrast = 4.7
+shader_parameter/speed_line_strength = 3.0
+shader_parameter/speed_line_displacement_px = 260.0
+shader_parameter/speed_line_density = 12.4
+shader_parameter/speed_line_y_stretch = 16.8
+shader_parameter/speed_line_width = 0.9
+shader_parameter/speed_line_speed = -0.05000000000000071
+shader_parameter/speed_line_warp = 4.36
+shader_parameter/speed_line_center_fade = 0.0
+shader_parameter/speed_line_edge_fade = 2.0
+
+[sub_resource type="QuadMesh" id="QuadMesh_black_white_flash_overlay"]
+flip_faces = true
+size = Vector2(2, 2)
+
+[sub_resource type="StandardMaterial3D" id="GroundMaterial"]
+albedo_color = Color(0.11, 0.12, 0.105, 1)
+roughness = 0.76
+
+[sub_resource type="BoxMesh" id="BoxMesh_floor"]
+size = Vector3(10, 0.08, 8)
+
+[sub_resource type="BoxMesh" id="BoxMesh_panel"]
+size = Vector3(1.8, 1, 0.16)
+
+[sub_resource type="StandardMaterial3D" id="DarkMaterial"]
+albedo_color = Color(0.035, 0.045, 0.065, 1)
+roughness = 0.84
+
+[sub_resource type="StandardMaterial3D" id="CoolMaterial"]
+albedo_color = Color(0.16, 0.48, 0.68, 1)
+roughness = 0.48
+emission_enabled = true
+emission = Color(0.03, 0.18, 0.28, 1)
+emission_energy_multiplier = 0.18
+
+[sub_resource type="BoxMesh" id="BoxMesh_block"]
+
+[node name="BlackWhiteFlash3DTest" type="Node3D"]
+script = ExtResource("1_script")
+"鏁堟灉鍚敤" = true
+"缂栬緫鍣ㄩ瑙? = true
+"鑷姩瑙﹀彂" = true
+"瑙﹀彂闂撮殧" = 0.86
+"鍐插嚮甯ф椂闀? = 0.14
+"鍐插嚮棰勮鐩镐綅" = 0.19
+"鏁堟灉寮哄害" = 1.0
+"鑷姩璺熼殢3D鍛戒腑鐐? = true
+"灞忓箷涓績" = Vector2(0.5, 0.54)
+"涓績淇濈暀鍗婂緞" = 0.0
+"涓績鍐插嚮鑼冨洿" = 0.01
+"鍙嶈浆鏁堟灉寮哄害" = 1.0
+"鍙嶈浆搴? = 1.0
+"杩囨护璧峰浜害" = 0.51
+"杩囨护鑼冨洿" = 0.001
+"浜儴闂鑹? = Color(1, 1, 1, 1)
+"鏆楅儴闂鑹? = Color(0, 0, 0, 1)
+"榛戠櫧纭害" = 4.7
+"閫熷害绾垮櫔娉㈠浘" = ExtResource("3_speed_noise")
+"閫熷害绾垮己搴? = 3.0
+"閫熷害绾跨疆鎹㈠己搴? = 260.0
+"閫熷害绾垮瘑搴? = 12.4
+"閫熷害绾縔鎷変几" = 16.8
+"閫熷害绾垮搴? = 0.9
+"閫熷害绾块€熷害" = -0.05000000000000071
+"閫熷害绾垮櫔娉㈡壈鍔? = 4.36
+"閫熷害绾夸腑蹇冪暀鐧? = 0.0
+"閫熷害绾胯竟缂樻贰鍑? = 2.0
+"鍚庡鐞嗚鐩栧眰璺緞" = NodePath("BlackWhiteFlashOverlay3D")
+"鐩告満璺緞" = NodePath("Camera3D")
+"鍛戒腑鐐硅妭鐐? = NodePath("TargetPivot/ImpactAnchor")
+"鐩爣鑺傜偣" = NodePath("TargetPivot")
+"鍐插嚮鐏厜" = NodePath("HitLight")
+
+[node name="WorldEnvironment" type="WorldEnvironment" parent="."]
+environment = SubResource("Environment_black_white_flash_3d")
+
+[node name="Camera3D" type="Camera3D" parent="."]
+transform = Transform3D(0.866025, -0.167731, 0.470969, 0, 0.942809, 0.333333, -0.5, -0.288675, 0.816497, 0, 2, 5)
+current = true
+fov = 42.0
+
+[node name="Sun" type="DirectionalLight3D" parent="."]
+transform = Transform3D(0.707107, -0.353553, 0.612372, 0, 0.866025, 0.5, -0.707107, -0.353553, 0.612372, 0, 4, 3)
+light_color = Color(0.92, 0.96, 1, 1)
+light_energy = 1.55
+shadow_enabled = true
+directional_shadow_max_distance = 18.0
+
+[node name="HitLight" type="OmniLight3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.35, 0.4)
+light_color = Color(0.78, 0.9, 1, 1)
+light_energy = 10.15
+omni_range = 5.4
+
+[node name="TargetPivot" type="Node3D" parent="."]
+
+[node name="TargetCore" type="MeshInstance3D" parent="TargetPivot"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.02, 0)
+material_override = SubResource("TargetMaterial")
+mesh = SubResource("BoxMesh_target")
+
+[node name="ImpactSlash" type="MeshInstance3D" parent="TargetPivot"]
+transform = Transform3D(0.707107, 0.5, -0.5, -0.707107, 0.5, -0.5, 0, 0.707107, 0.707107, 0, 0.22, 0.03)
+material_override = SubResource("SlashMaterial")
+mesh = SubResource("BoxMesh_slash")
+
+[node name="ImpactAnchor" type="Marker3D" parent="TargetPivot"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -1.4668732, 0, 0)
+
+[node name="AnchorDebugDot" type="MeshInstance3D" parent="TargetPivot/ImpactAnchor"]
+material_override = SubResource("BrightMaterial")
+mesh = SubResource("SphereMesh_marker")
+
+[node name="BlackWhiteFlashOverlay3D" type="MeshInstance3D" parent="."]
+material_override = SubResource("ShaderMaterial_black_white_flash_3d")
+cast_shadow = 0
+extra_cull_margin = 16384.0
+mesh = SubResource("QuadMesh_black_white_flash_overlay")
+
+[node name="Node3D" type="Node3D" parent="."]
+
+[node name="Ground" type="MeshInstance3D" parent="Node3D"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, -0.62, 0)
+material_override = SubResource("GroundMaterial")
+mesh = SubResource("BoxMesh_floor")
+
+[node name="BrightBlock" type="MeshInstance3D" parent="Node3D"]
+transform = Transform3D(1.1, 0, 0, 0, 0.72, 0, 0, 0, 0.28, -2.1, -0.02, -0.45)
+material_override = SubResource("BrightMaterial")
+mesh = SubResource("BoxMesh_panel")
+
+[node name="DarkBlock" type="MeshInstance3D" parent="Node3D"]
+transform = Transform3D(0.82, 0, 0, 0, 1.2, 0, 0, 0, 0.32, 2.05, 0.12, -0.25)
+material_override = SubResource("DarkMaterial")
+mesh = SubResource("BoxMesh_panel")
+
+[node name="CoolBlock" type="MeshInstance3D" parent="Node3D"]
+transform = Transform3D(0.75, 0, 0, 0, 0.72, 0, 0, 0, 0.75, 1.35, -0.15, -1.6)
+material_override = SubResource("CoolMaterial")
+mesh = SubResource("BoxMesh_block")
+
+[node name="WarmColumn" type="MeshInstance3D" parent="Node3D"]
+transform = Transform3D(0.55, 0, 0, 0, 1.35, 0, 0, 0, 0.55, -1.35, 0.1, -1.5)
+material_override = SubResource("BrightMaterial")
+mesh = SubResource("BoxMesh_block")

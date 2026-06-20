@@ -1,0 +1,29 @@
+[gd_resource type="ShaderMaterial" format=3 uid="uid://iyunv8nrlye3"]
+
+[ext_resource type="Shader" uid="uid://cs4r15je631yt" path="res://assets/shaders/tornado_flow.gdshader" id="1_shader"]
+[ext_resource type="Texture2D" uid="uid://b1xbguu3q5wcu" path="res://tx/T_Noise_HU85k.png" id="2_texture"]
+
+[resource]
+render_priority = 0
+shader = ExtResource("1_shader")
+shader_parameter/flow_texture = ExtResource("2_texture")
+shader_parameter/uv_scale = Vector2(2.4, 1.25)
+shader_parameter/uv_speed = Vector2(-0.74, 1.735)
+shader_parameter/density = 1.05999998189488
+shader_parameter/alpha_threshold = 0.32
+shader_parameter/white_threshold = 0.58
+shader_parameter/top_dissolve_start = 0.62999998591824
+shader_parameter/top_dissolve_span = 0.5
+shader_parameter/top_noise_scale = Vector2(6.2, 2.8)
+shader_parameter/top_noise_speed = Vector2(-0.18, 0.95)
+shader_parameter/top_contour_break_scale = Vector2(2.15, 0.34)
+shader_parameter/top_contour_break_strength = 0.12
+shader_parameter/top_shape_noise_scale = Vector2(1.65, 0.82)
+shader_parameter/top_height_variation = 0.3499999921768
+shader_parameter/top_chunk_strength = 0.499999988824
+shader_parameter/top_fragment_bias = 0.999999977648
+shader_parameter/top_emission_fade = 0.999999977648
+shader_parameter/dark_color = Color(0.62656015, 0, 0.26478997, 1)
+shader_parameter/light_color = Color(1, 0.42000002, 0.42000002, 1)
+shader_parameter/glow_strength = 4.15999990701568
+shader_parameter/glow_softness = 0.499999988824

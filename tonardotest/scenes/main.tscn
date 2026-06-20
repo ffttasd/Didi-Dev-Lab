@@ -1,0 +1,51 @@
+[gd_scene format=3 uid="uid://cowd0k7a0jqoy"]
+
+[ext_resource type="PackedScene" uid="uid://brenl2qltpqgr" path="res://model/tor.fbx" id="1_tornado_model"]
+[ext_resource type="Material" uid="uid://iyunv8nrlye3" path="res://assets/materials/tornado_flow.tres" id="2_tornado_material"]
+[ext_resource type="Script" uid="uid://bqig7avpnxsbk" path="res://scripts/tornado_scene.gd" id="3_tornado_scene"]
+[ext_resource type="Material" uid="uid://cwomunsqo82w8" path="res://assets/materials/tornado_outer_flow.tres" id="7_tornado_outer_material"]
+
+[sub_resource type="Environment" id="Environment_tornado_glow"]
+background_mode = 1
+background_color = Color(0.028, 0.03, 0.04, 1)
+background_energy_multiplier = 16.0
+ambient_light_source = 2
+ambient_light_color = Color(0.34, 0.36, 0.44, 1)
+ambient_light_energy = 0.3
+tonemap_mode = 2
+glow_enabled = true
+glow_levels/1 = 0.6
+glow_levels/2 = 0.32
+glow_levels/3 = 0.12
+glow_intensity = 0.56
+glow_strength = 1.1
+glow_blend_mode = 0
+glow_hdr_threshold = 1.05
+glow_hdr_scale = 2.2
+
+[node name="TornadoScene" type="Node3D" unique_id=1860589747]
+
+[node name="WorldEnvironment" type="WorldEnvironment" parent="." unique_id=1262692367]
+environment = SubResource("Environment_tornado_glow")
+
+[node name="TornadoModel" parent="." unique_id=2020794863 instance=ExtResource("1_tornado_model")]
+process_mode = 3
+transform = Transform3D(83.677666, 0, 54.48379, 0, 100, 0, -54.48379, 0, 83.677666, 0, 0, 0)
+script = ExtResource("3_tornado_scene")
+rotation_speed_degrees = 160.0
+
+[node name="attribdelete1" parent="TornadoModel" index="0" unique_id=17920633]
+material_override = ExtResource("2_tornado_material")
+
+[node name="TornadoModel2" parent="." unique_id=1233909523 instance=ExtResource("1_tornado_model")]
+process_mode = 3
+transform = Transform3D(51.91565, 0, 151.26833, 0, 100, 0, -151.26833, 0, 51.91565, 0, 0, 0)
+script = ExtResource("3_tornado_scene")
+rotation_speed_degrees = 160.0
+
+[node name="attribdelete1" parent="TornadoModel2" index="0" unique_id=17920633]
+transform = Transform3D(0.83370936, 0, 0, 0, 1.0000001, 0, 0, 0, 0.8529888, 0, 0, 0)
+material_override = ExtResource("7_tornado_outer_material")
+
+[editable path="TornadoModel"]
+[editable path="TornadoModel2"]

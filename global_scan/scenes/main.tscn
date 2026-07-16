@@ -1,0 +1,158 @@
+[gd_scene format=3 uid="uid://dim24mffj2xa2"]
+
+[ext_resource type="Environment" uid="uid://d0kj8t8pxe6mo" path="res://materials/environment.tres" id="1_environment"]
+[ext_resource type="PlaneMesh" path="res://resources/meshes/ground_mesh.tres" id="2_ground_mesh"]
+[ext_resource type="BoxMesh" path="res://resources/meshes/box_mesh.tres" id="3_box_mesh"]
+[ext_resource type="SphereMesh" path="res://resources/meshes/sphere_mesh.tres" id="4_sphere_mesh"]
+[ext_resource type="CylinderMesh" path="res://resources/meshes/cylinder_mesh.tres" id="5_cylinder_mesh"]
+[ext_resource type="CapsuleMesh" path="res://resources/meshes/capsule_mesh.tres" id="6_capsule_mesh"]
+[ext_resource type="QuadMesh" path="res://resources/meshes/fullscreen_quad_mesh.tres" id="7_quad_mesh"]
+[ext_resource type="Material" path="res://materials/ground_material.tres" id="8_ground_mat"]
+[ext_resource type="Material" path="res://materials/concrete_material.tres" id="9_concrete_mat"]
+[ext_resource type="Material" path="res://materials/metal_material.tres" id="10_metal_mat"]
+[ext_resource type="Material" path="res://materials/accent_material.tres" id="11_accent_mat"]
+[ext_resource type="Material" path="res://materials/scan_origin_material.tres" id="12_origin_mat"]
+[ext_resource type="Material" uid="uid://bvaiqwmtmr7j5" path="res://materials/global_scan_material.tres" id="13_scan_mat"]
+[ext_resource type="AnimationLibrary" path="res://animations/scan_animation_library.tres" id="14_anim_lib"]
+[ext_resource type="Script" uid="uid://cwlf7rqwjyn4b" path="res://scripts/scan_input.gd" id="15_scan_input"]
+
+[node name="Main" type="Node3D" unique_id=620458323]
+
+[node name="Press F to start" type="Node3D" parent="." unique_id=1237779866]
+
+[node name="WorldEnvironment" type="WorldEnvironment" parent="." unique_id=151419034]
+environment = ExtResource("1_environment")
+
+[node name="KeyLight" type="DirectionalLight3D" parent="." unique_id=1347759217]
+transform = Transform3D(0.8290376, 0.44065, -0.34427354, 0, 0.6156615, 0.7880107, 0.5591929, -0.6532905, 0.51040655, 0, 0, 0)
+light_color = Color(0.72, 0.84, 1, 1)
+light_energy = 1.35
+shadow_enabled = true
+directional_shadow_max_distance = 40.0
+
+[node name="FillLight" type="OmniLight3D" parent="." unique_id=1534475003]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -4, 5, 3)
+light_color = Color(0.15, 0.38, 0.65, 1)
+light_energy = 5.0
+omni_range = 13.0
+
+[node name="Camera3D" type="Camera3D" parent="." unique_id=825974857]
+transform = Transform3D(0.8278974, -0.17796968, 0.53189546, 2.2027722e-09, 0.94832367, 0.31730464, -0.56087965, -0.26269564, 0.7851147, 7.7639337, 6.1480646, 13.37484)
+current = true
+fov = 48.0
+
+[node name="ScanQuad" type="MeshInstance3D" parent="Camera3D" unique_id=428073332]
+unique_name_in_owner = true
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, -1)
+material_override = ExtResource("13_scan_mat")
+cast_shadow = 0
+extra_cull_margin = 16384.0
+mesh = ExtResource("7_quad_mesh")
+
+[node name="Ground" type="MeshInstance3D" parent="." unique_id=333230980]
+material_override = ExtResource("8_ground_mat")
+mesh = ExtResource("2_ground_mesh")
+
+[node name="ScanOrigin" type="MeshInstance3D" parent="." unique_id=1535225575]
+transform = Transform3D(0.72, 0, 0, 0, 0.72, 0, 0, 0, 0.72, 0, 0, 0)
+material_override = ExtResource("12_origin_mat")
+mesh = ExtResource("4_sphere_mesh")
+
+[node name="OriginLight" type="OmniLight3D" parent="ScanOrigin" unique_id=52939466]
+light_color = Color(0.05, 0.82, 1, 1)
+light_energy = 3.5
+shadow_enabled = true
+
+[node name="Clutter" type="Node3D" parent="." unique_id=1346353128]
+
+[node name="WestTower" type="MeshInstance3D" parent="Clutter" unique_id=1076998396]
+transform = Transform3D(2.2577424, 0, 0.381618, 0, 4.5, 0, -0.43886068, 0, 1.9632543, -6.3, 2.25, -3.4)
+material_override = ExtResource("9_concrete_mat")
+mesh = ExtResource("3_box_mesh")
+
+[node name="EastTower" type="MeshInstance3D" parent="Clutter" unique_id=1865412724]
+transform = Transform3D(2.6629584, 0, -0.52532893, 0, 3.3, 0, 0.8652476, 0, 1.6167961, 6.5, 1.65, 2.3)
+material_override = ExtResource("10_metal_mat")
+mesh = ExtResource("3_box_mesh")
+
+[node name="BackBlock" type="MeshInstance3D" parent="Clutter" unique_id=1463109659]
+transform = Transform3D(3.6541817, 0, 0.610105, 0, 2.7, 0, -1.6269466, 0, 1.3703182, 1.8, 1.35, -7)
+material_override = ExtResource("9_concrete_mat")
+mesh = ExtResource("3_box_mesh")
+
+[node name="LowBlock" type="MeshInstance3D" parent="Clutter" unique_id=1974986672]
+transform = Transform3D(2.2073689, 0, -0.93894315, 0, 1.3, 0, 1.1736789, 0, 1.7658951, -3.6, 0.65, 3.2)
+material_override = ExtResource("10_metal_mat")
+mesh = ExtResource("3_box_mesh")
+
+[node name="CrateA" type="MeshInstance3D" parent="Clutter" unique_id=1380419050]
+transform = Transform3D(1.153514, 0, 0.33076483, 0, 1.2, 0, -0.33076483, 0, 1.153514, 3.1, 0.6, 4.9)
+material_override = ExtResource("11_accent_mat")
+mesh = ExtResource("3_box_mesh")
+
+[node name="CrateB" type="MeshInstance3D" parent="Clutter" unique_id=1984559182]
+transform = Transform3D(0.97349614, -0.10067746, -0.20535196, 0.06889766, 0.9852824, -0.15643448, 0.21807909, 0.1381401, 0.96610504, 4, 1.55, 4.5)
+material_override = ExtResource("9_concrete_mat")
+mesh = ExtResource("3_box_mesh")
+
+[node name="ColumnA" type="MeshInstance3D" parent="Clutter" unique_id=1695870573]
+transform = Transform3D(0.8965752, -0.17431147, 0, 0.07844016, 1.9923894, 0, 0, 0, 0.9, -2.8, 1.8, -4.7)
+material_override = ExtResource("10_metal_mat")
+mesh = ExtResource("5_cylinder_mesh")
+
+[node name="ColumnB" type="MeshInstance3D" parent="Clutter" unique_id=1497926953]
+transform = Transform3D(1.0864573, 0.23465171, 0, -0.17207792, 1.4815326, 0, 0, 0, 1.1, 7.8, 1.35, -3.2)
+material_override = ExtResource("11_accent_mat")
+mesh = ExtResource("5_cylinder_mesh")
+
+[node name="ColumnC" type="MeshInstance3D" parent="Clutter" unique_id=1874562028]
+transform = Transform3D(0.75, 0, 0, 0, 1.25, 0, 0, 0, 0.75, -7.6, 1.1, 4.8)
+material_override = ExtResource("10_metal_mat")
+mesh = ExtResource("5_cylinder_mesh")
+
+[node name="OrbA" type="MeshInstance3D" parent="Clutter" unique_id=1901609551]
+transform = Transform3D(1.5, 0, 0, 0, 1.5, 0, 0, 0, 1.5, 2.3, 1, -3)
+material_override = ExtResource("11_accent_mat")
+mesh = ExtResource("4_sphere_mesh")
+
+[node name="OrbB" type="MeshInstance3D" parent="Clutter" unique_id=146125534]
+transform = Transform3D(1.8, 0, 0, 0, 1.8, 0, 0, 0, 1.8, -8.7, 1.25, 0.7)
+material_override = ExtResource("10_metal_mat")
+mesh = ExtResource("4_sphere_mesh")
+
+[node name="OrbC" type="MeshInstance3D" parent="Clutter" unique_id=1396415837]
+transform = Transform3D(0.9, 0, 0, 0, 0.9, 0, 0, 0, 0.9, 7.4, 0.7, 6.6)
+material_override = ExtResource("9_concrete_mat")
+mesh = ExtResource("4_sphere_mesh")
+
+[node name="CapsuleA" type="MeshInstance3D" parent="Clutter" unique_id=27539700]
+transform = Transform3D(0.97198987, -0.33261326, 0.077885106, 0.15236625, 0.5133303, -0.92718387, 0.1789419, 1.3696206, 0.3664206, -0.8, 1.05, 5.9)
+material_override = ExtResource("11_accent_mat")
+mesh = ExtResource("6_capsule_mesh")
+
+[node name="CapsuleB" type="MeshInstance3D" parent="Clutter" unique_id=1390863381]
+transform = Transform3D(0.9857424, 0.7210533, 0, -0.5491652, 1.1126524, -0.43079755, -0.22187714, 0.4495407, 1.0662614, 5, 1.2, -5.2)
+material_override = ExtResource("10_metal_mat")
+mesh = ExtResource("6_capsule_mesh")
+
+[node name="FallenBeam" type="MeshInstance3D" parent="Clutter" unique_id=1926697391]
+transform = Transform3D(0.23148769, -2.7804337, 0.36527866, 0.48200142, 2.096875, -0.06702814, -0.12879476, 2.8499656, 0.40568304, -1.5, 0.85, -2)
+material_override = ExtResource("9_concrete_mat")
+mesh = ExtResource("3_box_mesh")
+
+[node name="BridgeBeam" type="MeshInstance3D" parent="Clutter" unique_id=142690023]
+transform = Transform3D(0.018540679, -5.0197544, -0.14235048, 0.549665, 0.18147737, 0, 0.0049679596, -1.3450391, 0.5312592, 4.9, 3.8, 0.1)
+material_override = ExtResource("11_accent_mat")
+mesh = ExtResource("3_box_mesh")
+
+[node name="Slab" type="MeshInstance3D" parent="Clutter" unique_id=1412661168]
+transform = Transform3D(3.5703323, -0.065648906, 1.0200515, 0.29012594, 0.49392793, 0.2783462, -2.192841, -0.041538402, 1.6976508, -5.2, 0.55, 6.8)
+material_override = ExtResource("9_concrete_mat")
+mesh = ExtResource("3_box_mesh")
+
+[node name="AnimationPlayer" type="AnimationPlayer" parent="." unique_id=1823215489]
+unique_name_in_owner = true
+libraries/ = ExtResource("14_anim_lib")
+
+[node name="ScanInput" type="Node" parent="." unique_id=134700167]
+script = ExtResource("15_scan_input")

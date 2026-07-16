@@ -1,0 +1,8 @@
+[gd_resource type="Sky" load_steps=2 format=3]
+
+[ext_resource type="Material" path="res://materials/procedural_sky_material.tres" id="1_sky_material"]
+
+[resource]
+sky_material = ExtResource("1_sky_material")
+process_mode = 2
+radiance_size = 3

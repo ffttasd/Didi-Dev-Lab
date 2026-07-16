@@ -1,0 +1,8 @@
+[gd_resource type="AnimationLibrary" load_steps=2 format=3]
+
+[ext_resource type="Animation" path="res://animations/scan_loop.tres" id="1_scan"]
+
+[resource]
+_data = {
+&"scan_loop": ExtResource("1_scan")
+}

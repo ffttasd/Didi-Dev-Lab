@@ -1,0 +1,14 @@
+* text=auto eol=lf
+
+*.gd text eol=lf
+*.gdshader text eol=lf
+*.godot text eol=lf
+*.tscn text eol=lf
+*.tres text eol=lf
+*.import text eol=lf
+
+*.png binary
+*.jpg binary
+*.webp binary
+*.glb binary
+*.fbx binary

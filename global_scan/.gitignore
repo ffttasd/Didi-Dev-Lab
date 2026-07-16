@@ -1,0 +1,9 @@
+.godot/
+export/
+*.pck
+*.exe
+*.zip
+.DS_Store
+Thumbs.db
+.vscode/
+.idea/

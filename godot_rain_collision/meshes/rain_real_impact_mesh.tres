@@ -1,0 +1,10 @@
+[gd_resource type="CapsuleMesh" load_steps=2 format=3]
+
+[ext_resource type="Material" path="res://materials/rain_real_impact_draw_material.tres" id="1_real_impact_draw"]
+
+[resource]
+material = ExtResource("1_real_impact_draw")
+radius = 0.018
+height = 0.12
+radial_segments = 8
+rings = 3

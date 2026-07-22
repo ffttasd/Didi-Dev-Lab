@@ -1,0 +1,9 @@
+[gd_resource type="PlaneMesh" format=3 uid="uid://c60eqhyguoaqh"]
+
+[ext_resource type="Material" uid="uid://b8fqw5pkqadkj" path="res://materials/water_surface_natural_material.tres" id="1_source_water_material"]
+
+[resource]
+material = ExtResource("1_source_water_material")
+size = Vector2(16, 14)
+subdivide_width = 32
+subdivide_depth = 28

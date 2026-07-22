@@ -1,0 +1,15 @@
+[gd_resource type="StandardMaterial3D" format=3 uid="uid://b8fqw5pkqadkj"]
+
+[ext_resource type="Texture2D" uid="uid://cvl2eb6ygdc8u" path="res://textures/water.png" id="1_source_water_texture"]
+
+[resource]
+transparency = 1
+albedo_color = Color(0.52, 0.66, 0.82, 0.28)
+normal_enabled = true
+normal_scale = -0.11
+normal_texture = ExtResource("1_source_water_texture")
+refraction_enabled = true
+refraction_scale = 0.065
+refraction_texture = ExtResource("1_source_water_texture")
+uv1_scale = Vector3(2.1, 2.1, 2.1)
+proximity_fade_distance = 0.01

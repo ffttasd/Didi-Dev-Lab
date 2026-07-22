@@ -1,0 +1,24 @@
+[gd_resource type="Environment" format=3 uid="uid://bnj7xrq2gxype"]
+
+[ext_resource type="Sky" path="res://environment/rain_sky.tres" id="1_sky"]
+
+[resource]
+background_mode = 2
+sky = ExtResource("1_sky")
+ambient_light_source = 3
+ambient_light_color = Color(0.48, 0.59, 0.72, 1)
+ambient_light_energy = 0.65
+reflected_light_source = 2
+tonemap_mode = 2
+tonemap_exposure = 4.0
+glow_enabled = true
+glow_intensity = 0.6
+fog_enabled = true
+fog_light_color = Color(0.19, 0.25, 0.34, 1)
+fog_light_energy = 0.45
+fog_density = 0.012
+ssr_enabled = true
+ssr_max_steps = 256
+ssr_fade_in = 0.05
+ssr_fade_out = 0.2
+ssr_depth_tolerance = 0.15

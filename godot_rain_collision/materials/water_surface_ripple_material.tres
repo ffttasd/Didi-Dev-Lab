@@ -1,0 +1,27 @@
+[gd_resource type="ShaderMaterial" format=4 uid="uid://fypcv54fdlk7"]
+
+[ext_resource type="Shader" uid="uid://bl5flghkj75ph" path="res://shaders/rain_puddle_water.gdshader" id="1_ripple_shader"]
+[ext_resource type="Texture2D" uid="uid://cvl2eb6ygdc8u" path="res://textures/water.png" id="2_source_water_normal"]
+
+[resource]
+resource_name = "Rain Water SSR Ripple"
+render_priority = 0
+shader = ExtResource("1_ripple_shader")
+shader_parameter/source_water_normal = ExtResource("2_source_water_normal")
+shader_parameter/water_albedo = Color(0.82, 0.88, 0.94, 1)
+shader_parameter/water_metallic = 1.0
+shader_parameter/water_roughness = 0.0
+shader_parameter/micro_normal_scale_a = 0.46
+shader_parameter/micro_normal_scale_b = 0.73
+shader_parameter/micro_normal_direction_a = Vector2(0.82, 0.36)
+shader_parameter/micro_normal_direction_b = Vector2(-0.31, 0.95)
+shader_parameter/micro_normal_world_speed_a = 0.18
+shader_parameter/micro_normal_world_speed_b = 0.21
+shader_parameter/micro_normal_strength = 0.022
+shader_parameter/micro_roughness_boost = 0.006
+shader_parameter/ripple_normal_strength = 0.002
+shader_parameter/ripple_roughness_boost = 0.035
+shader_parameter/ripple_lifetime = 0.8
+shader_parameter/ripple_speed = 0.3
+shader_parameter/ripple_band_width = 0.03
+shader_parameter/ripple_edge_breakup = 0.18

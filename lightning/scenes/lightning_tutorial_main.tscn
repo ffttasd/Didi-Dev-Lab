@@ -1,0 +1,42 @@
+[gd_scene format=3 uid="uid://dmiq2omnd8hbf"]
+
+[ext_resource type="PackedScene" uid="uid://ov1j0eiamujy" path="res://scenes/instance/lightning_preview_rig.tscn" id="1_lightning_rig"]
+
+[sub_resource type="Environment" id="Environment_tutorial"]
+background_mode = 1
+background_color = Color(0.0235294, 0.0313726, 0.054902, 1)
+ambient_light_source = 3
+ambient_light_color = Color(0.435294, 0.490196, 0.580392, 1)
+tonemap_mode = 2
+glow_enabled = true
+glow_intensity = 0.82
+glow_bloom = 0.18
+glow_hdr_threshold = 0.9
+
+[sub_resource type="PlaneMesh" id="PlaneMesh_floor"]
+size = Vector2(12, 12)
+
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_floor"]
+albedo_color = Color(0.0803922, 0.0941176, 0.129412, 1)
+roughness = 0.92
+
+[node name="LightningTutorialMain" type="Node3D" unique_id=1922554433]
+
+[node name="WorldEnvironment" type="WorldEnvironment" parent="." unique_id=982468484]
+environment = SubResource("Environment_tutorial")
+
+[node name="Camera3D" type="Camera3D" parent="." unique_id=519763335]
+transform = Transform3D(1.0000014, 0, 0, 0, 1.0000045, 0, 0, 0, 1.0000094, 0, 0.984113, 4.24569)
+current = true
+fov = 43.0
+
+[node name="LightningPreviewRig" parent="." unique_id=944599589 instance=ExtResource("1_lightning_rig")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 1.35, 0)
+core_energy = 60.0
+glow_energy = 40.0
+alpha_cutoff = 0.23
+
+[node name="Floor" type="MeshInstance3D" parent="." unique_id=934662281]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, -0.02, 0)
+mesh = SubResource("PlaneMesh_floor")
+surface_material_override/0 = SubResource("StandardMaterial3D_floor")

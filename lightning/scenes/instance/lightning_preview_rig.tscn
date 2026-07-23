@@ -1,0 +1,33 @@
+[gd_scene format=3 uid="uid://ov1j0eiamujy"]
+
+[ext_resource type="Script" path="res://scripts/lightning_preview_rig.gd" id="1_rig"]
+[ext_resource type="Material" path="res://materials/vfx/lightning_preview.tres" id="2_lightning_mat"]
+[ext_resource type="Script" path="res://scripts/lightning_preview_controls.gd" id="3_lightning_preview_controls"]
+
+[sub_resource type="QuadMesh" id="QuadMesh_lightning_preview"]
+size = Vector2(0.9, 2.7)
+
+[sub_resource type="PlaneMesh" id="PlaneMesh_lceeu"]
+
+[node name="LightningPreviewRig" type="Node3D" unique_id=1252248703]
+script = ExtResource("1_rig")
+core_energy = 31.1
+glow_energy = 11.0
+
+[node name="LightningPreview" type="MeshInstance3D" parent="." unique_id=1011438627]
+cast_shadow = 0
+mesh = SubResource("QuadMesh_lightning_preview")
+surface_material_override/0 = ExtResource("2_lightning_mat")
+script = ExtResource("3_lightning_preview_controls")
+core_energy = 31.1
+glow_energy = 11.0
+
+[node name="FlashLight" type="OmniLight3D" parent="." unique_id=1933924269]
+light_color = Color(0.6722071, 0.8495451, 1, 1)
+light_energy = 1.5537395
+light_volumetric_fog_energy = 0.0
+omni_range = 8.0
+
+[node name="MeshInstance3D" type="MeshInstance3D" parent="." unique_id=1356878165]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, -1.3075562, 0)
+mesh = SubResource("PlaneMesh_lceeu")
